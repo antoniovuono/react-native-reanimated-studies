@@ -32,8 +32,8 @@ export const Primary = () => {
     }, []);
 
     useEffect(() => {
-        progress.value = withRepeat(withSpring(0.2), 3, true);
-        scale.value = withRepeat(withSpring(1), 3, true);
+        progress.value = withRepeat(withSpring(0.2), -1, true);
+        scale.value = withRepeat(withSpring(1), -1, true);
     }, []);
 
     return (
