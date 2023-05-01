@@ -37,7 +37,6 @@ export const ExerciseOne = () => {
         scale.value = withTiming(1, { duration: 2500 });
         opacity.value = withTiming(0, { duration: 4000 }, () => {
             "worklet";
-
             runOnJS(navigateToNextPage)();
         });
     }, []);
