@@ -1,6 +1,8 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useEffect } from "react";
 import { StatusBar } from "react-native";
 import {
+    runOnJS,
     useAnimatedStyle,
     useSharedValue,
     withRepeat,
@@ -14,6 +16,8 @@ export const ExerciseOne = () => {
     const scale = useSharedValue(0);
     const opacity = useSharedValue(1);
 
+    const { navigate } = useNavigation();
+
     const reanimatedStyled = useAnimatedStyle(() => {
         return {
             opacity: opacity.value,
@@ -25,9 +29,17 @@ export const ExerciseOne = () => {
         };
     });
 
+    const navigateToNextPage = () => {
+        navigate("Primary");
+    };
+
     useEffect(() => {
         scale.value = withTiming(1, { duration: 2500 });
-        opacity.value = withTiming(0, { duration: 4000 });
+        opacity.value = withTiming(0, { duration: 4000 }, () => {
+            "worklet";
+
+            runOnJS(navigateToNextPage)();
+        });
     }, []);
 
     return (
