@@ -20,3 +20,14 @@ export const Square = styled(Animated.View)`
     height: ${SIZE}px;
     background-color: blue;
 `;
+
+export const TextContent = styled(Animated.View)`
+    position: absolute;
+`;
+
+export const Title = styled.Text`
+    font-size: 70px;
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+`;

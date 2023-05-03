@@ -6,7 +6,7 @@ import Animated, {
     useAnimatedStyle,
 } from "react-native-reanimated";
 
-import { Container, Square } from "./styles";
+import { Container, Square, TextContent, Title } from "./styles";
 
 interface PagesProps {
     title: string;
@@ -44,9 +44,38 @@ export const Pages = ({ title, index, translateX }: PagesProps) => {
         };
     });
 
+    const rTextStyle = useAnimatedStyle(() => {
+        const translateY = interpolate(
+            translateX.value,
+            inputRange,
+            [height / 2, 0, -height / 2],
+            Extrapolate.CLAMP
+        );
+
+        const opacity = interpolate(
+            translateX.value,
+            inputRange,
+            [-2, 1, -2],
+            Extrapolate.CLAMP
+        );
+
+        return {
+            opacity,
+            transform: [
+                {
+                    translateY,
+                },
+            ],
+        };
+    });
+
     return (
         <Container style={{ backgroundColor: `rgba(0,0,256, 0.${index + 2})` }}>
             <Square style={rStyle} />
+
+            <TextContent style={rTextStyle}>
+                <Title>{title}</Title>
+            </TextContent>
         </Container>
     );
 };

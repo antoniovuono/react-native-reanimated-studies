@@ -17,7 +17,12 @@ export const InterpolateScrollView = () => {
     });
 
     return (
-        <Container onScroll={scrollHandler} scrollEventThrottle={16} horizontal>
+        <Container
+            pagingEnabled
+            onScroll={scrollHandler}
+            scrollEventThrottle={16}
+            horizontal
+        >
             {WORDS.map((title, index) => {
                 return (
                     <Pages
