@@ -14,7 +14,7 @@ export const Contact = () => {
     return (
         <Container>
             <IconContent>
-                <AntDesign name="user" size={34} color="white" />
+                <AntDesign name="user" size={28} color="white" />
             </IconContent>
             <Divider />
 
