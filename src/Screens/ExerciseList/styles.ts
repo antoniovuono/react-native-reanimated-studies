@@ -12,6 +12,11 @@ export const HeaderContent = styled.View`
     padding: 5px 20px;
 `;
 
+export const FormContent = styled.View`
+    width: 100%;
+    padding: 15px 20px;
+`;
+
 export const Title = styled.Text`
     font-size: 32px;
     font-weight: 700;

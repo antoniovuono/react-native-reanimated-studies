@@ -10,7 +10,12 @@ import {
     UserName,
 } from "./styles";
 
-export const Contact = () => {
+export interface IContactInfo {
+    name: string;
+    phone: string;
+}
+
+export const Contact = ({ name, phone }: IContactInfo) => {
     return (
         <Container>
             <IconContent>
@@ -19,8 +24,8 @@ export const Contact = () => {
             <Divider />
 
             <UserDetails>
-                <UserName>Antonio Vuono</UserName>
-                <Phone>(11) 941663638</Phone>
+                <UserName>{name}</UserName>
+                <Phone>{phone}</Phone>
             </UserDetails>
         </Container>
     );
