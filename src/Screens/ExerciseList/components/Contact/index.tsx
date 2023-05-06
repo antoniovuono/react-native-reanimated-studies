@@ -11,6 +11,7 @@ import {
 } from "./styles";
 
 export interface IContactInfo {
+    id?: string;
     name: string;
     phone: string;
 }
