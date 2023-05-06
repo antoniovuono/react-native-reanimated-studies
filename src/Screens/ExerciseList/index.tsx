@@ -51,6 +51,7 @@ export const ExerciseList = () => {
         setName("");
         setPhone("");
         setIsFormAppear(false);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     };
 
     return (
