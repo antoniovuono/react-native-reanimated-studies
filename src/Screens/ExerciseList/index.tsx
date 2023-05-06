@@ -1,6 +1,6 @@
 import { AntDesign } from "@expo/vector-icons";
 import React, { useEffect, useState } from "react";
-import { Alert, FlatList, StatusBar } from "react-native";
+import { Alert, FlatList, StatusBar, TouchableOpacity } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 
 import { AddContactButton } from "./components/AddContactButton";
@@ -19,8 +19,11 @@ export const ExerciseList = () => {
     const [contacts, setContacts] = useState<IContactInfo[]>([]);
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
+    const [isFormAppear, setIsFormAppear] = useState(false);
 
-    const handleOpenContactForm = () => {};
+    const handleOpenContactForm = () => {
+        setIsFormAppear((state) => !state);
+    };
 
     const handleAddContact = () => {
         if (!name) {
@@ -50,22 +53,33 @@ export const ExerciseList = () => {
             <Container>
                 <HeaderContent>
                     <Title>Contatos</Title>
-                    <AntDesign name="pluscircle" size={34} color="green" />
-                </HeaderContent>
-                <FormContent>
-                    <InputText
-                        placeholder="Nome"
-                        value={name}
-                        onChangeText={setName}
-                    />
-                    <InputText
-                        placeholder="Telefone"
-                        value={phone}
-                        onChangeText={setPhone}
-                    />
 
-                    <AddContactButton onPress={handleAddContact} />
-                </FormContent>
+                    <TouchableOpacity onPress={handleOpenContactForm}>
+                        <AntDesign
+                            name="pluscircle"
+                            size={34}
+                            color={isFormAppear ? "gray" : "green"}
+                        />
+                    </TouchableOpacity>
+                </HeaderContent>
+
+                {isFormAppear && (
+                    <FormContent>
+                        <InputText
+                            placeholder="Nome"
+                            value={name}
+                            onChangeText={setName}
+                        />
+                        <InputText
+                            placeholder="Telefone"
+                            value={phone}
+                            onChangeText={setPhone}
+                        />
+
+                        <AddContactButton onPress={handleAddContact} />
+                    </FormContent>
+                )}
+
                 <ListContent>
                     <Divider />
 
