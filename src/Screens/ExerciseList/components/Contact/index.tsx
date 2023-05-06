@@ -42,7 +42,6 @@ export const Contact = ({ name, phone }: IContactInfo) => {
                     transalateX.value = withSpring(0);
                 } else {
                     transalateX.value = event.translationX;
-                    console.log(transalateX.value);
                 }
             },
             onEnd: () => {
