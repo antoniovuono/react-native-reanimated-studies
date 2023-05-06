@@ -1,3 +1,4 @@
+import Animated from "react-native-reanimated";
 import styled from "styled-components/native";
 
 export const Container = styled.SafeAreaView`
@@ -12,9 +13,10 @@ export const HeaderContent = styled.View`
     padding: 5px 20px;
 `;
 
-export const FormContent = styled.View`
+export const FormContent = styled(Animated.View)`
     width: 100%;
     padding: 15px 20px;
+    height: 240px;
 `;
 
 export const Title = styled.Text`
@@ -33,4 +35,5 @@ export const Divider = styled.View`
     width: 100%;
     background-color: gray;
     margin-bottom: 20px;
+    margin-top: 20px;
 `;

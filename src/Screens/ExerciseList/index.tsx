@@ -1,7 +1,12 @@
 import { AntDesign } from "@expo/vector-icons";
-import React, { useEffect, useState } from "react";
-import { Alert, FlatList, StatusBar, TouchableOpacity } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import React, { useState } from "react";
+import {
+    Alert,
+    FlatList,
+    LayoutAnimation,
+    StatusBar,
+    TouchableOpacity,
+} from "react-native";
 
 import { AddContactButton } from "./components/AddContactButton";
 import { Contact, IContactInfo } from "./components/Contact";
@@ -23,6 +28,7 @@ export const ExerciseList = () => {
 
     const handleOpenContactForm = () => {
         setIsFormAppear((state) => !state);
+        LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     };
 
     const handleAddContact = () => {
@@ -63,6 +69,12 @@ export const ExerciseList = () => {
                     </TouchableOpacity>
                 </HeaderContent>
 
+                {!isFormAppear && (
+                    <FormContent>
+                        <Divider style={{ marginTop: 0 }} />
+                    </FormContent>
+                )}
+
                 {isFormAppear && (
                     <FormContent>
                         <InputText
@@ -77,12 +89,12 @@ export const ExerciseList = () => {
                         />
 
                         <AddContactButton onPress={handleAddContact} />
+
+                        <Divider />
                     </FormContent>
                 )}
 
                 <ListContent>
-                    <Divider />
-
                     <FlatList
                         data={contacts}
                         keyExtractor={(item) => String(item.id)}
