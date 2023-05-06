@@ -61,11 +61,19 @@ export const ExerciseList = () => {
                     <Title>Contatos</Title>
 
                     <TouchableOpacity onPress={handleOpenContactForm}>
-                        <AntDesign
-                            name="pluscircle"
-                            size={34}
-                            color={isFormAppear ? "gray" : "green"}
-                        />
+                        {!isFormAppear ? (
+                            <AntDesign
+                                name="pluscircle"
+                                size={34}
+                                color={"green"}
+                            />
+                        ) : (
+                            <AntDesign
+                                name="minuscircle"
+                                size={34}
+                                color={"red"}
+                            />
+                        )}
                     </TouchableOpacity>
                 </HeaderContent>
 

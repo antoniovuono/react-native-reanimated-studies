@@ -10,13 +10,12 @@ export const HeaderContent = styled.View`
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 20px;
+    padding: 2px 20px;
 `;
 
 export const FormContent = styled(Animated.View)`
     width: 100%;
     padding: 15px 20px;
-    height: 240px;
 `;
 
 export const Title = styled.Text`
@@ -34,6 +33,5 @@ export const Divider = styled.View`
     height: 1px;
     width: 100%;
     background-color: gray;
-    margin-bottom: 20px;
     margin-top: 20px;
 `;
