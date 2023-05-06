@@ -1,4 +1,4 @@
-import { AntDesign } from "@expo/vector-icons";
+import { Foundation } from "@expo/vector-icons";
 import React from "react";
 import { Dimensions } from "react-native";
 import {
@@ -67,7 +67,7 @@ export const Contact = ({ name, phone }: IContactInfo) => {
         <PanGestureHandler onGestureEvent={panGesture}>
             <Container style={rAnimatedStyle}>
                 <IconContent>
-                    <AntDesign name="user" size={28} color="white" />
+                    <Foundation name="telephone" size={34} color="white" />
                 </IconContent>
                 <Divider />
 
