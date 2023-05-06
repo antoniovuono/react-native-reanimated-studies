@@ -47,6 +47,10 @@ export const ExerciseList = () => {
         };
 
         setContacts([...contacts, newContact]);
+
+        setName("");
+        setPhone("");
+        setIsFormAppear(false);
     };
 
     return (
