@@ -67,7 +67,7 @@ export const Contact = ({ name, phone }: IContactInfo) => {
         <PanGestureHandler onGestureEvent={panGesture}>
             <Container style={rAnimatedStyle}>
                 <IconContent>
-                    <Foundation name="telephone" size={34} color="white" />
+                    <Foundation name="telephone" size={34} color="green" />
                 </IconContent>
                 <Divider />
 
