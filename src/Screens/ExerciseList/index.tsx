@@ -46,12 +46,24 @@ export const ExerciseList = () => {
             phone,
         };
 
-        setContacts([...contacts, newContact]);
+        setContacts([...contacts, newContact] as IContactInfo[]);
 
         setName("");
         setPhone("");
         setIsFormAppear(false);
         LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
+    };
+
+    const handleDeleteContact = (id: string) => {
+        const newContactGroup = [...contacts];
+
+        const contact = newContactGroup.find((contact) => contact.id === id);
+
+        const index = newContactGroup.indexOf(contact as IContactInfo);
+
+        newContactGroup.splice(index, 1);
+
+        setContacts(newContactGroup);
     };
 
     return (
@@ -116,6 +128,9 @@ export const ExerciseList = () => {
                                 key={item.id}
                                 name={item.name}
                                 phone={item.phone}
+                                onDelete={() =>
+                                    handleDeleteContact(item.id as string)
+                                }
                             />
                         )}
                     />

@@ -1,6 +1,6 @@
-import { Foundation } from "@expo/vector-icons";
+import { Foundation, MaterialIcons } from "@expo/vector-icons";
 import React from "react";
-import { Dimensions } from "react-native";
+import { Dimensions, TouchableOpacity } from "react-native";
 import {
     PanGestureHandler,
     PanGestureHandlerGestureEvent,
@@ -10,11 +10,11 @@ import {
     useAnimatedStyle,
     useSharedValue,
     withSpring,
-    withTiming,
 } from "react-native-reanimated";
 
 import {
     Container,
+    DeleteButton,
     Divider,
     IconContent,
     Phone,
@@ -26,13 +26,14 @@ export interface IContactInfo {
     id?: string;
     name: string;
     phone: string;
+    onDelete: () => void;
 }
 
 const { width } = Dimensions.get("window");
 
-const TRANSLATE_X_TRESHOLD = -width * 0.2;
+const TRANSLATE_X_TRESHOLD = -width * 0.15;
 
-export const Contact = ({ name, phone }: IContactInfo) => {
+export const Contact = ({ name, phone, onDelete }: IContactInfo) => {
     const transalateX = useSharedValue(0);
 
     const panGesture = useAnimatedGestureHandler<PanGestureHandlerGestureEvent>(
@@ -64,18 +65,25 @@ export const Contact = ({ name, phone }: IContactInfo) => {
         };
     });
     return (
-        <PanGestureHandler onGestureEvent={panGesture}>
-            <Container style={rAnimatedStyle}>
-                <IconContent>
-                    <Foundation name="telephone" size={34} color="green" />
-                </IconContent>
-                <Divider />
+        <>
+            <DeleteButton>
+                <TouchableOpacity onPress={onDelete}>
+                    <MaterialIcons name="delete" size={38} color="red" />
+                </TouchableOpacity>
+            </DeleteButton>
+            <PanGestureHandler onGestureEvent={panGesture}>
+                <Container style={rAnimatedStyle}>
+                    <IconContent>
+                        <Foundation name="telephone" size={34} color="green" />
+                    </IconContent>
+                    <Divider />
 
-                <UserDetails>
-                    <UserName>{name}</UserName>
-                    <Phone>{phone}</Phone>
-                </UserDetails>
-            </Container>
-        </PanGestureHandler>
+                    <UserDetails>
+                        <UserName>{name}</UserName>
+                        <Phone>{phone}</Phone>
+                    </UserDetails>
+                </Container>
+            </PanGestureHandler>
+        </>
     );
 };

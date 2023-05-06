@@ -9,6 +9,7 @@ export const Container = styled(Animated.View)`
     flex-direction: row;
     align-items: center;
     margin-bottom: 15px;
+    background-color: black;
 `;
 
 export const IconContent = styled.View`
@@ -40,4 +41,13 @@ export const Phone = styled.Text`
     color: white;
     font-size: 19px;
     font-weight: 400;
+`;
+
+export const DeleteButton = styled.View`
+    height: 80px;
+    width: 30%;
+    position: absolute;
+    right: -1px;
+    justify-content: center;
+    align-items: flex-end;
 `;
