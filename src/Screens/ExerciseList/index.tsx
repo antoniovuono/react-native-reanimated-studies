@@ -32,12 +32,12 @@ export const ExerciseList = () => {
     };
 
     const handleAddContact = () => {
-        if (!name) {
-            Alert.alert("Contato", "O nome é obrigatório");
+        if (!name.trim()) {
+            return Alert.alert("Contato", "O nome é obrigatório");
         }
 
-        if (!phone) {
-            Alert.alert("Contato", "O telefone é obrigatório");
+        if (!phone.trim()) {
+            return Alert.alert("Contato", "O telefone é obrigatório.");
         }
 
         const newContact = {

@@ -6,6 +6,9 @@ import {
     PanGestureHandlerGestureEvent,
 } from "react-native-gesture-handler";
 import {
+    FadeIn,
+    FadeOut,
+    Layout,
     useAnimatedGestureHandler,
     useAnimatedStyle,
     useSharedValue,
@@ -72,7 +75,12 @@ export const Contact = ({ name, phone, onDelete }: IContactInfo) => {
                 </TouchableOpacity>
             </DeleteButton>
             <PanGestureHandler onGestureEvent={panGesture}>
-                <Container style={rAnimatedStyle}>
+                <Container
+                    style={rAnimatedStyle}
+                    entering={FadeIn}
+                    exiting={FadeOut}
+                    layout={Layout.delay(200)}
+                >
                     <IconContent>
                         <Foundation name="telephone" size={34} color="green" />
                     </IconContent>
